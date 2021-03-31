@@ -19,6 +19,7 @@ To set up a device compatible with this skill, a rasberry pi or other internet c
       }
       })
 ```
-This gets the entry from the database with the most recent time, and the devicestate represents the request from the user, if it is 0 the most recent request was to turn off the light, if it is 1 the most recent request was to turn it on.
 
-With this setup this skill can be used to turn one light on or off with Alexa.
+The sql query will read the most recent entry in the RDS database. The devicestate field of this entry will represent the most recent request sent from Alexa to the skill. A 1 will indicate the most recent request was to turn the light on, the devicestate being 0 will indicate that the most recent request was to turn the device off. After reading from the database and finding the devicestate, the raspberry pi should handle the actual turning on or off of the light. This is dependent on the raspberry pi and the light connected to it. One example tutorial for setting up a raspberry pi to control a light can be found here: https://www.instructables.com/Raspberry-Pi-Home-Automation-Control-lights-comput/ .
+
+With this setup this skill can be used to turn one light on or off with Alexa and a raspberry pi.
